@@ -1,5 +1,6 @@
 # Satellite Image Super-Resolution using SwinIR
-### Klymo Hackathon - Team Alpha
+## Klymo Hackathon - Team Alpha
+### Team Members: Mangesh Thale | Kedar Mahajan | Koustubh Gadekar
 
 ## Overview
 
