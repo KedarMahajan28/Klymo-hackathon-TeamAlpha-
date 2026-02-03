@@ -8,11 +8,6 @@ import io
 import sys
 import os
 from datetime import datetime
-if st.button("🧹 Clear Cache & Reload (Dev)"):
-    st.cache_data.clear()
-    st.cache_resource.clear()
-    st.success("Cache cleared. Reload the page (Ctrl+R).")
-# Add SwinIR to path
 if not os.path.exists('SwinIR'):
     st.error("SwinIR repository not found. Please run setup.sh first.")
     st.stop()
@@ -50,22 +45,36 @@ st.markdown("""
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
     }
-    .metric-card {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 1.5rem;
-        border-radius: 12px;
-        text-align: center;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        margin: 0.5rem 0;
-    }
+.metric-card {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin: 0.5rem 0;
+    color: #1f2937;   /* 🔥 ADD THIS */
+}
+
+.metric-card div {
+    color: #1f2937;
+}
     .info-box {
-        background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
-        padding: 1.5rem;
-        border-radius: 12px;
-        border-left: 5px solid #00acc1;
-        margin: 1rem 0;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
+    background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 5px solid #00acc1;
+    margin: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    color: #00363a;   /* 🔥 ADD THIS */
+}
+
+.info-box h3 {
+    color: #004d40 !important;
+}
+
+.info-box p {
+    color: #00363a !important;
+}
     .success-box {
         background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
         padding: 1rem;
@@ -82,22 +91,99 @@ st.markdown("""
         font-size: 2.5rem;
         font-weight: 800;
     }
-    .comparison-label {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #333;
-        text-align: center;
-        padding: 0.5rem;
-        background-color: #f0f2f6;
-        border-radius: 8px;
-        margin-bottom: 0.5rem;
-    }
+.comparison-label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #111827 !important;
+    text-align: center;
+    padding: 0.5rem;
+    background-color: #f0f2f6;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
     .stat-number {
         font-size: 2rem;
         font-weight: 700;
         color: #667eea;
     }
+            /* ---------- FORCE VISIBILITY FIXES ---------- */
+
+/* Sidebar bottom card */
+section[data-testid="stSidebar"] div[style*="background-color"] {
+    color: #111827 !important;
+}
+
+section[data-testid="stSidebar"] strong,
+section[data-testid="stSidebar"] small {
+    color: #111827 !important;
+}
+
+/* Footer text */
+.footer-text,
+footer,
+footer p,
+footer small {
+    color: #e5e7eb !important;
+}
+
+/* Fix Streamlit markdown small text */
+small {
+    color: #d1d5db !important;
+}
+
+/* Fix main title gradient visibility */
+h1 {
+    background: linear-gradient(135deg, #8b93ff 0%, #c4b5fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Ensure all custom cards have readable text */
+.metric-card,
+.info-box,
+.success-box {
+    color: #111827 !important;
+}
+
+/* Prevent Streamlit dark mode overrides */
+.stMarkdown, 
+.stMarkdown p, 
+.stMarkdown div {
+    color: inherit;
+}
+            /* ---------- FIX EXPANDER TEXT VISIBILITY ---------- */
+
+/* Expander container */
+div[data-testid="stExpander"] {
+    background-color: #0f172a;
+    border-radius: 10px;
+}
+
+/* Expander content text */
+div[data-testid="stExpander"] *,
+div[data-testid="stExpander"] p,
+div[data-testid="stExpander"] li,
+div[data-testid="stExpander"] strong {
+    color: #e5e7eb !important;
+}
+
+/* Bullet points */
+div[data-testid="stExpander"] ul {
+    padding-left: 1.2rem;
+}
+
+/* Expander header text */
+div[data-testid="stExpander"] summary {
+    color: #e5e7eb !important;
+    font-weight: 600;
+}
+
+/* Bullet dot color */
+div[data-testid="stExpander"] li::marker {
+    color: #93c5fd;
+}
     </style>
+            
 """, unsafe_allow_html=True)
 
 # Initialize session state
@@ -468,7 +554,7 @@ with tab3:
 # Footer
 st.markdown("---")
 st.markdown("""
-<div style="text-align: center; color: #666; padding: 2rem;">
+<div style="text-align: center; color: #e5e7eb; padding: 2rem;">
     <h4 style="color: #667eea;">🌍 Powered by SwinIR & WorldStrat Dataset</h4>
     <p><strong>Team Alpha</strong> | Klymo Hackathon 2026</p>
     <p><small>For optimal results, use satellite imagery similar to the WorldStrat training dataset</small></p>
