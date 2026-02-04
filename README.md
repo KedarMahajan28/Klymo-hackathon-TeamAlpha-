@@ -19,7 +19,7 @@ This project implements a deep learning solution for satellite image super-resol
 - **Output**: High-resolution (HR) images at 640×640 pixels
 - **Scale Factor**: 4× super-resolution
 - **Channels**: RGB (3 channels) from 12-bit imagery
-- **Training Subset**: 50 areas used (Train: 35, Val: 10, Test: 5)
+
 
 #### Temporal Frame Processing
 The system processes multiple temporal frames (8 by default) from the same geographic area to leverage temporal information:
@@ -151,7 +151,6 @@ Total Loss = λ₁·L1 + λ₂·MS-SSIM + λ₃·Gradient + λ₄·Perceptual + 
 - **Batch Size 1**: Minimal memory footprint per step
 - **Efficient Data Loading**: 2 workers with prefetching
 - **Automatic Garbage Collection**: Between epochs
-- **GPU Memory**: ~0.1GB during training (very efficient!)
 
 ### 6. **Data Augmentation**
 
@@ -215,7 +214,6 @@ The model demonstrates good performance in super-resolution tasks:
 #### Observations
 - PSNR of 22.55 dB indicates moderate reconstruction quality
 - SSIM of 0.57 shows reasonable structural preservation
-- Small training set (50 areas) limits generalization
 - Model successfully handles 4× upscaling task
 - Temporal fusion helps aggregate multi-frame information
 
@@ -230,8 +228,6 @@ The training exhibited stable convergence:
 - **Learning Curve**: Consistent improvement for first 45 epochs
 
 ### Comparison with Baselines
-
-While specific comparisons aren't shown in the notebook, the architecture's design incorporates improvements over traditional methods:
 
 **vs. Bicubic Interpolation**:
 - Significantly better detail preservation
@@ -354,7 +350,7 @@ While specific comparisons aren't shown in the notebook, the architecture's desi
 - **GPU**: NVIDIA Tesla T4
 - **Time per Epoch**: ~37 seconds
 - **Total Training Time**: ~38 minutes
-- **Memory Usage**: ~0.1GB GPU
+
 
 ### Best Model (Epoch 46)
 - **Validation Loss**: 0.1844
@@ -399,7 +395,7 @@ The visualization output shows the model successfully:
 Potential enhancements to boost performance:
 
 ### Data-Related
-1. **Larger Training Set**: Use full 3,928 areas instead of 50
+1. **Larger Training Set**: Use full 3,928 areas.
 2. **Data Augmentation**: Add more geometric and photometric transforms
 3. **Multi-Band Data**: Leverage additional spectral bands beyond RGB
 4. **Better Preprocessing**: Optimize normalization and temporal alignment
@@ -454,8 +450,6 @@ The combination of temporal processing, pretrained weights, multi-component loss
 
 - **SwinIR**: Original architecture by Jingyun Liang et al.
 - **WorldStrat Dataset**: Satellite imagery dataset for super-resolution
-- **Klymo Hackathon**: Platform and competition
-- **Team Alpha**: Project implementation and optimization
 
 ---
 
