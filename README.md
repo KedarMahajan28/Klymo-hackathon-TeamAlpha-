@@ -79,12 +79,12 @@ Total Loss = L1 + 0.05·MS-SSIM + 0.1·Gradient + 0.02·Perceptual + 0.01·Range
 | Validation Loss | 0.1844 |
 | PSNR | 22.55 dB |
 | SSIM | 0.5730 |
-| Training Time | 38 minutes (61 epochs) |
+| Training Time | 61 epochs |
 | Inference Speed | 0.5-1.0 sec/image |
 | Model Size | 3.87M parameters |
 | GPU Memory | ~0.1GB |
 
-### Training Progress
+### Training Progress (Baseline to MainModel)
 
 - **Loss Improvement:** 0.53 → 0.18 (66% reduction)
 - **PSNR Improvement:** 9.78 → 22.55 dB (+13 dB)
@@ -133,6 +133,7 @@ Total Loss = L1 + 0.05·MS-SSIM + 0.1·Gradient + 0.02·Perceptual + 0.01·Range
 ## Dataset Details
 
 **Training Subset (50 areas):**
+- Pairs: 3928
 - Train: 35 areas
 - Validation: 10 areas
 - Test: 5 areas
